@@ -1,0 +1,2 @@
+# Bioinformatika
+Bioinf feladatok
