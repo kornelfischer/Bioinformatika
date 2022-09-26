@@ -1,0 +1,1 @@
+print("laptoprol mentettem fel")
