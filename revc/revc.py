@@ -3,7 +3,7 @@ import sys
 
 inFile = sys.argv[1]
 
-def complementing_a_strand_of_dna(my_file="test.txt"):
+def revc(my_file="test.txt"):
     open_file = open(inFile, "r")
     data = open_file.read()
     reverse=data[::-1]
@@ -20,4 +20,4 @@ def complementing_a_strand_of_dna(my_file="test.txt"):
 
     print(output)
 
-complementing_a_strand_of_dna((input))
+revc((input))
