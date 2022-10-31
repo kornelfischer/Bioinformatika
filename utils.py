@@ -2,7 +2,57 @@ import sys, os
 import numpy as np
 import pandas as pd
 
-inFile = sys.argv[1]
+#inFile = sys.argv[1]
+
+def cons(my_file="test.txt"):
+    sequences=[]
+    open_file = open(inFile, "r")
+    data = open_file.read()
+    genes = data.split(">")[1:]
+    for seq in genes:
+        parts=seq.split("\n")
+        #seq_name = parts[0]
+        seq = ''.join(parts[1:])
+        sequences.append(seq)
+        #id_array.append(seq_name)
+    length=len(sequences[0])
+    #print(sequences)
+    profile_matrix=np.zeros((4,length), dtype=int)
+    for i in range(length):
+        for seq in sequences:
+            if seq[i]=='A':
+                profile_matrix[0][i] += 1
+            if seq[i]=='C':
+                profile_matrix[1][i] += 1
+            if seq[i]=='G':
+                profile_matrix[2][i] += 1
+            if seq[i]=='T':
+                profile_matrix[3][i] += 1
+
+    x=profile_matrix.argmax(axis=0)
+    dna_dict={0:'A',1:'C',2:'G',3:'T'}
+    output=list(np.vectorize(dna_dict.get)(x))
+    #mindketto jo kiiras
+    #print(*output,sep='')
+    print(''.join(output))
+    print('A:',*profile_matrix[0])
+    print('C:',*profile_matrix[1])
+    print('G:',*profile_matrix[2])
+    print('T:',*profile_matrix[3])
+
+
+def hamm(my_file="test.txt"):
+    open_file = open(inFile, "r")
+    data = open_file.read()
+    data=data.split("\n")
+    s = data[0]
+    t = data[1]
+    length = len(t)
+    dist=0
+    for i in range(length):
+        if s[i]!=t[i]:
+            dist+=1
+    print(dist)
 
 def gc(my_file="test.txt"):
     id_array=[]
