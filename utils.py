@@ -2,7 +2,26 @@ import sys, os
 import numpy as np
 import pandas as pd
 
-#inFile = sys.argv[1]
+def RNA(seq):
+    output=""
+    for s in seq:
+        if s == 'T':
+            output += "U"
+        else:
+            output += s
+
+    return(output)
+
+def prot(seq):
+	output=""
+	for i in range(0,len(seq),3):
+		char=seq[i:i+3]
+		amino_acid=codon_table[char]
+		if amino_acid=="Stop":
+			continue
+		output += amino_acid
+
+	return(output)
 
 def cons(my_file="test.txt"):
     sequences=[]
