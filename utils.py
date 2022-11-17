@@ -25,7 +25,7 @@ def prot(seq):
 
 def cons(my_file="test.txt"):
     sequences=[]
-    open_file = open(inFile, "r")
+    open_file = open(my_file, "r")
     data = open_file.read()
     genes = data.split(">")[1:]
     for seq in genes:
@@ -61,7 +61,7 @@ def cons(my_file="test.txt"):
 
 
 def hamm(my_file="test.txt"):
-    open_file = open(inFile, "r")
+    open_file = open(my_file, "r")
     data = open_file.read()
     data=data.split("\n")
     s = data[0]
@@ -76,7 +76,7 @@ def hamm(my_file="test.txt"):
 def gc(my_file="test.txt"):
     id_array=[]
     gc_array=[]
-    open_file = open(inFile, "r")
+    open_file = open(my_file, "r")
     data = open_file.read()
     genes = data.split(">")[1:]
     for seq in genes:
@@ -95,7 +95,7 @@ def graph(my_file,overlap):
     id_array=[]
     #elmented a seq-eket
     seq_array=[]
-    open_file = open(inFile, "r")
+    open_file = open(my_file, "r")
     data = open_file.read()
     genes = data.split(">")[1:]
     for seq in genes:
