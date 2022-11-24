@@ -1,5 +1,4 @@
 import sys, os
-import utils
 from Bio import SeqIO
 
 inFile = sys.argv[1]
