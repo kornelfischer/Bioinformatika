@@ -2,6 +2,31 @@ import sys, os
 import numpy as np
 import pandas as pd
 
+def revc(sequence):
+    reverse=sequence[::-1]
+    output=""
+    for s in reverse:
+        if s == 'A':
+            output += "T"
+        elif s =='C':
+            output += "G"
+        elif s =='G':
+            output += "C"
+        elif s =='T':
+            output += "A"
+
+    return(output)
+
+def dbru(lines):
+    kmers=set()
+    for line in lines:
+        kmers.add((line[:-1], line[1:]))
+        rc=revc(line)
+        kmers.add((rc[:-1],rc[1:]))
+    #return kmers
+    for (a,b) in sorted(kmers):
+        print(f"({a}, {b})")
+
 def RNA(seq):
     output=""
     for s in seq:
@@ -25,7 +50,7 @@ def prot(seq):
 
 def cons(my_file="test.txt"):
     sequences=[]
-    open_file = open(my_file, "r")
+    open_file = open(inFile, "r")
     data = open_file.read()
     genes = data.split(">")[1:]
     for seq in genes:
@@ -61,7 +86,7 @@ def cons(my_file="test.txt"):
 
 
 def hamm(my_file="test.txt"):
-    open_file = open(my_file, "r")
+    open_file = open(inFile, "r")
     data = open_file.read()
     data=data.split("\n")
     s = data[0]
@@ -76,7 +101,7 @@ def hamm(my_file="test.txt"):
 def gc(my_file="test.txt"):
     id_array=[]
     gc_array=[]
-    open_file = open(my_file, "r")
+    open_file = open(inFile, "r")
     data = open_file.read()
     genes = data.split(">")[1:]
     for seq in genes:
@@ -95,7 +120,7 @@ def graph(my_file,overlap):
     id_array=[]
     #elmented a seq-eket
     seq_array=[]
-    open_file = open(my_file, "r")
+    open_file = open(inFile, "r")
     data = open_file.read()
     genes = data.split(">")[1:]
     for seq in genes:
